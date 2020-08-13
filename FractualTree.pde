@@ -1,4 +1,3 @@
-
 void setup(){
   fullScreen();
   init();
@@ -27,17 +26,13 @@ void branch(float length){
       if(random(0, 1) > 0.5){
         angle *= -1;
       }
-      paintBranch(angle, length);
+      pushMatrix();
+      translate(0, -length);
+      rotate(radians(angle));
+      branch(length*random(0.5, 1));
+      popMatrix();
     }
   }
-}
-
-void paintBranch(float angle, float oldLength){
-  pushMatrix();
-  translate(0, -oldLength);
-  rotate(radians(angle));
-  branch(oldLength*random(0.5, 1));
-  popMatrix();
 }
 
 void keyPressed() {
